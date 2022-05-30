@@ -34,6 +34,11 @@ public class EmployeeServiceImp implements EmployeeService {
     }
 
     @Override
+    public Employee findByDni(String dni) {
+        return employeeRepository.findByDni(dni);
+    }
+
+    @Override
     public Employee update(Employee employee) {
         return employeeRepository.save(employee);
     }

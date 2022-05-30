@@ -39,6 +39,7 @@ public class AccountApi {
     @GetMapping("/{id}")
     public ResponseEntity<Account> findById(@PathVariable("id") long id){
         Account account = accountService.findById(id);
+        //El servicio genera un objeto con Id=0 si no encuentra en la base de datos. si es asi, se lanza la excepcion con su mensaje
         if(account.getId()==0)
             throw new ModeloNotFoundException("ID no encontrado");
         return ResponseEntity.ok(account);

@@ -1,5 +1,6 @@
 package com.management.afp.api;
 
+import com.management.afp.exception.ModeloBadRequestException;
 import com.management.afp.exception.ModeloNotFoundException;
 import com.management.afp.model.Employee;
 import com.management.afp.service.EmployeeService;
@@ -23,10 +24,16 @@ public class EmployeeApi {
         return ResponseEntity.ok(employeeService.findAll());
     }
 
+    //El metodo que sigue hace uan validacion del registro del empleado. si ya existe en la base de datos, bota la excepcion con su mensaje
     @PostMapping
     public ResponseEntity<Employee> create(@Valid @RequestBody Employee employee){
-        Employee response = employeeService.create(employee);
-        return new ResponseEntity<Employee>(response, HttpStatus.CREATED);
+        try {
+            Employee response = employeeService.create(employee);
+            return new ResponseEntity<Employee>(response, HttpStatus.CREATED);
+        } catch (Exception ex){
+            throw new ModeloNotFoundException("La Persona ya esta registrada y asociada a una AFP");
+        }
+
     }
 
     @PutMapping
@@ -38,6 +45,7 @@ public class EmployeeApi {
     @GetMapping("/{id}")
     public ResponseEntity<Employee> findById(@PathVariable("id") long id){
         Employee employee = employeeService.findById(id);
+        //El servicio genera un objeto con Id=0 si no encuentra en la base de datos. si es asi, se lanza la excepcion con su mensaje
         if(employee.getId()==0)
             throw new ModeloNotFoundException("ID no encontrado");
         return ResponseEntity.ok(employee);

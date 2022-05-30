@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
+//La clase sirve para generar una estructra para mostrar el mensaje cuando se genere alguna excepcion
 @AllArgsConstructor
 @Data
 public class ExceptionResponse {

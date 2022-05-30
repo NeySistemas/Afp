@@ -11,4 +11,5 @@ public interface AccountService {
     Account findById(long id);
     Account update(Account account);
     void delete(long id);
+    Account findByIdEmployee(long id);
 }

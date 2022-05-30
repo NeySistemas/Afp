@@ -13,7 +13,7 @@ public class Afp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Pattern(regexp = "^[\\p{L} .'-]+$",message = "NOmbre de Afp solo debe tener letras")
+    @Pattern(regexp = "^[\\p{L} .'-]+$",message = "Nombre de Afp solo debe tener letras")
     @Column(nullable = false,length = 12)
     private String nombre;
 

@@ -41,4 +41,9 @@ public class AccountServiceImp implements AccountService {
     public void delete(long id) {
         accountRepository.deleteById(id);
     }
+
+    @Override
+    public Account findByIdEmployee(long id) {
+        return accountRepository.findByIdEmployee(id);
+    }
 }

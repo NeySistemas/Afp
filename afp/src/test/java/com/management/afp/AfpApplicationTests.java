@@ -1,11 +1,16 @@
 package com.management.afp;
 
+import com.management.afp.exception.ModeloBadRequestException;
 import com.management.afp.model.Account;
 import com.management.afp.model.Afp;
 import com.management.afp.model.Employee;
+import com.management.afp.repository.AccountRepository;
+import com.management.afp.repository.EmployeeRepository;
+import com.management.afp.repository.SolicitationRepository;
 import com.management.afp.service.AccountService;
 import com.management.afp.service.AfpService;
 import com.management.afp.service.EmployeeService;
+import com.management.afp.service.SolicitationService;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +29,20 @@ class AfpApplicationTests {
 	EmployeeService employeeService;
 	@Autowired
 	AccountService accountService;
-
+	@Autowired
+	EmployeeRepository employeeRepository;
+	@Autowired
+	SolicitationRepository solicitationRepository;
+	@Autowired
+	AccountRepository accountRepository;
+	@Autowired
+	SolicitationService solicitationService;
 
 	@Test
 	void contextLoads() {
-		afp.setId(1);
-		//employee.setId(23);
-		employee.setId(2);
-		account.setId(1);
-		account.setMonto_disponible(200);
-		account.setFecha_retiro(LocalDate.of(2022,12,10));
-		account.setEmployee(employee);
-		accountService.update(account);
-		//System.out.println(accountService.findById(1).getNum_cuenta());
+
+
+
 	}
 
 }

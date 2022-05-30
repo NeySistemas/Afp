@@ -13,7 +13,7 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private float monto_disponible;
-    private LocalDate fecha_retiro; //la fecha se debe colocar como "YYYY-MM-DD"
+    private LocalDate fecha_retiro; //la fecha se debe colocar como "YYYY-MM-DD" desde Postman
     @Pattern(regexp = "^[0-9]*$",message = "Cuenta debe tener solo numeros")
     private String num_cuenta;
     @OneToOne
